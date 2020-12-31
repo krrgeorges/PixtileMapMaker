@@ -42,6 +42,16 @@ $(document).ready(function(){
 		$("#present-mode").text("ERASE")
 	})
 
+	$("#tileimg").click(function(){
+		html2canvas($('#canvas-main'), {
+		  onrendered: function(canvas) {
+		    var img = canvas.toDataURL()
+	
+		    window.open(img);
+		  }
+		});
+	})
+
 	//tilepack selection
 	$(".tp-row").click(function(){
 		$("#tilePackSelectorModal").modal("hide");

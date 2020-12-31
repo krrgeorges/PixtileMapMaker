@@ -20,7 +20,7 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+	<script src="./html2canvas.js"></script>
 	<script type="text/javascript" src="./index.js"></script>
 
 
@@ -63,6 +63,7 @@
 			display: inline-block;
 		}
 		.pc-row{
+			white-space: nowrap;
 			line-height:0px;
 		}
 		.pc-col{
@@ -81,7 +82,7 @@
 			background-color: #2ecc71;
 			border-radius: 10px;
 			position: absolute;
-			z-index: 1000;
+			z-index: 10000;
 		}
 		.tilefill{
 			-webkit-touch-callout: none;
@@ -98,7 +99,8 @@
 
 <section id="mode-container">
 	<button class="btn btn-primary btn-sm" id="mode-draw"><i class="fa fa-pencil"></i></button>	
-	<button class="btn btn-primary btn-sm" id="mode-erase"><i class="fa fa-eraser"></i></button>		
+	<button class="btn btn-primary btn-sm" id="mode-erase"><i class="fa fa-eraser"></i></button>
+	<button class="btn btn-primary btn-sm" id="tileimg" data-toggle="modal" data-target="#tileImageModal"><i class="fa fa-picture-o"></i></button>		
 </section>
 
 
@@ -106,7 +108,7 @@
 
 	<!-- controls -->
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-light" id="header-control" style="background-color: #212f3d!important;">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" id="header-control" style="background-color: #212f3d!important;">
 		<div class="col-lg-1">
 			PMM
 		</div>
@@ -136,7 +138,7 @@
 	</nav>
 
 
-	<div class="" id="canvas-main" style="padding-bottom: 100px;">
+	<div class="" id="canvas-main" style="margin:10px;padding-bottom: 100px;">
 
 	</div>
 
@@ -233,7 +235,32 @@
       <div class="modal-body">
 
       	<div class="col-lg-12" id="pseudo-canvas">
-      		Select Tilepack First
+      		Select Tilepack First(If selected, please wait for a while for the tilesprites to load)
+		</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="tileImageModal" tabindex="-1" role="dialog" aria-labelledby="tileImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 1000px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tilePackSelectorModalLabel">Art.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      	<div class="col-lg-12" id="pseudo-canvas">
+      		Select Tilepack First 
 		</div>
 
       </div>
